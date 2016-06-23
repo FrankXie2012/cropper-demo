@@ -1,0 +1,20 @@
+{
+  "name": "cropper",
+  "authors": [
+    "Frank Shieh <fr6nkxie@gmail.com>"
+  ],
+  "description": "A demo for cropper.",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "cropper": "^2.3.2"
+  }
+}

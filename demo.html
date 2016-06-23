@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo for cropper</title>
+	<link rel="stylesheet" href="bower_components/cropper/dist/cropper.min.css">
+	<style>
+		html, body{ margin: 0; padding: 0; }
+		.origin{ width: 700px; padding: 30px; }
+		.preview{ width: 100px; height: 100px; overflow: hidden; position: absolute; top: 30px; left: 780px; border: 1px solid #ddd; }
+		.data{ position: absolute; top: 160px; left: 780px; }
+		.data span{ color: #405e7b; }
+	</style>
+</head>
+<body>
+<div class="origin">
+	<img src="pudong.jpg" width="600" height="400" />
+</div>
+<div class="preview"></div>
+<div class="data">
+	<p>X: <span class="x"></span> px</p>
+	<p>Y: <span class="y"></span> px</p>
+	<p>Width: <span class="width"></span> px</p>
+	<p>Height: <span class="height"></span> px</p>
+</div>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/cropper/dist/cropper.min.js"></script>
+<script>
+$('img').cropper({
+  aspectRatio: 1/1,
+  crop: function(e) {
+    // Output the result data for cropping image.
+    $('.x').text(e.x);
+    $('.y').text(e.y);
+    $('.width').text(e.width);
+    $('.height').text(e.height);
+
+    console.log(e.x);
+    console.log(e.y);
+    console.log(e.width);
+    console.log(e.height);
+    console.log(e.rotate);
+    console.log(e.scaleX);
+    console.log(e.scaleY);
+  },
+  preview: $('.preview')
+});
+</script>
+</body>
+</html>
