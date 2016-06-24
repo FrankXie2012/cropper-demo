@@ -10,11 +10,13 @@
 		.preview{ width: 100px; height: 100px; overflow: hidden; position: absolute; top: 30px; left: 780px; border: 1px solid #ddd; }
 		.data{ position: absolute; top: 160px; left: 780px; }
 		.data span{ color: #405e7b; }
+		.cropped{ width: 200px; height: 200px; border: 1px solid #ddd; }
+		.btn{ background-color: #337ab7; color: #fff; padding: 5px 15px; border: none; cursor: pointer; vertical-align: top; }
 	</style>
 </head>
 <body>
 <div class="origin">
-	<img src="pudong.jpg" width="600" height="400" />
+	<img id="img" src="pudong.jpg" width="600" height="400" />
 </div>
 <div class="preview"></div>
 <div class="data">
@@ -22,6 +24,8 @@
 	<p>Y: <span class="y"></span> px</p>
 	<p>Width: <span class="width"></span> px</p>
 	<p>Height: <span class="height"></span> px</p>
+	<button class="btn">获取裁剪后的图片</button>
+	<img src="" class="cropped" />
 </div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -44,7 +48,13 @@ $('img').cropper({
     console.log(e.scaleX);
     console.log(e.scaleY);
   },
-  preview: $('.preview')
+  preview: $('.preview'),
+  built: function () {
+  	$('.btn').click(function(){
+		var imageData = $('#img').cropper('getCroppedCanvas').toDataURL();
+		$('.cropped').attr('src', imageData);
+  	});
+  }
 });
 </script>
 </body>
